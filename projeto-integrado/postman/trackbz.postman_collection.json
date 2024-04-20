@@ -1,0 +1,146 @@
+{
+	"info": {
+		"_postman_id": "b23bcce9-fe02-42a6-9bbf-b63082bf018b",
+		"name": "trackbz",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "1811642",
+		"_collection_link": "https://orange-shuttle-308046.postman.co/workspace/Mars~f57511c8-c2d6-4973-823b-a0cdeb9df0d9/collection/1811642-b23bcce9-fe02-42a6-9bbf-b63082bf018b?action=share&source=collection_link&creator=1811642"
+	},
+	"item": [
+		{
+			"name": "http://localhost:8080/api/veiculos",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/veiculos",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"veiculos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/api/veiculos",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"veiculo_id\": 101,\r\n    \"nome_motorista\": \"Flavio Faria\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/veiculos",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"veiculos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/api/gps/send",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"key\": 10,\r\n    \"list\": [\r\n        {\r\n            \"veiculo_id\": 10,\r\n            \"localizacao\": {\r\n                \"latitude\": -22.905186997906036,\r\n                \"longitude\": -43.17386561497243\r\n            },\r\n            \"datahora\": 1681981200\r\n        },\r\n        {\r\n            \"veiculo_id\": 10,\r\n            \"localizacao\": {\r\n                \"latitude\": -22.906313986530353,\r\n                \"longitude\": -43.203228732375\r\n            },\r\n            \"datahora\": 1681981500\r\n        },\r\n        {\r\n            \"veiculo_id\": 10,\r\n            \"localizacao\": {\r\n                \"latitude\": -22.88940817386128,\r\n                \"longitude\": -43.22158068075161\r\n            },\r\n            \"datahora\": 1681981800\r\n        }\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/gps/send",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"gps",
+						"send"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Apache Pinot Query",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "default"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8888/api/queries/10",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8888",
+					"path": [
+						"api",
+						"queries",
+						"10"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
