@@ -18,6 +18,8 @@
         <spring-cloud.version>2023.0.1</spring-cloud.version>
         <springdoc.version>2.2.0</springdoc.version>
         <springdoc-openapi-maven-plugin.version>1.4</springdoc-openapi-maven-plugin.version>
+        <springdoc.api-docs.path>/api-docs</springdoc.api-docs.path>
+        <springdoc.swagger-ui.path>/swagger-ui.html</springdoc.swagger-ui.path>
     </properties>
     <dependencies>
         <dependency>
@@ -124,6 +126,18 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-mongodb</artifactId>
         </dependency>
+            <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-test</artifactId>
+        <scope>test</scope>
+    </dependency>
+    <dependency>
+        <groupId>org.mockito</groupId>
+        <artifactId>mockito-core</artifactId>
+        <scope>test</scope>
+    </dependency>
+
+</dependencies>
     </dependencies>
     <dependencyManagement>
         <dependencies>

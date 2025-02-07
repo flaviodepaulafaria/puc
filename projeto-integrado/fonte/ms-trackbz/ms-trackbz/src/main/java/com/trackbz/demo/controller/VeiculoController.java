@@ -25,5 +25,12 @@ public class VeiculoController {
         return service.findAll();
     }
 
+    @GetMapping("/{id)")
+    public Veiculo findById(@PathVariable Long id){
+        return service.findById(id);
+    
+
+
+
 
 }

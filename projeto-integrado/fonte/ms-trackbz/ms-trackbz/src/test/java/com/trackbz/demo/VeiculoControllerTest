@@ -1,0 +1,55 @@
+
+// filepath: src/test/java/com/trackbz/demo/controller/VeiculoControllerTest.java
+package com.trackbz.demo.controller;
+
+import com.trackbz.demo.model.Veiculo;
+import com.trackbz.demo.service.VeiculoService;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
+import org.springframework.http.MediaType;
+import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.setup.MockMvcBuilders;
+
+import static org.mockito.Mockito.when;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+
+public class VeiculoControllerTest {
+
+    private MockMvc mockMvc;
+
+    @Mock
+    private VeiculoService veiculoService;
+
+    @InjectMocks
+    private VeiculoController veiculoController;
+
+    @BeforeEach
+    public void setUp() {
+        MockitoAnnotations.openMocks(this);
+        mockMvc = MockMvcBuilders.standaloneSetup(veiculoController).build();
+    }
+
+    @Test
+    public void testCreateVeiculo() throws Exception {
+        Veiculo veiculo = new Veiculo();
+        // Set the properties of veiculo as needed
+
+        when(veiculoService.createVeiculo(veiculo)).thenReturn(veiculo);
+
+        mockMvc.perform(post("/api/v1/veiculos")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content("{\"marca\": \"Fiat\", \"modelo\": \"Uno\"}"))
+                .andExpect(status().isOk());
+    }
+
+    @Test
+    public void testGetVeiculos() throws Exception {
+        mockMvc.perform(get("/api/v1/veiculos"))
+                .andExpect(status().isOk());
+    }
+}

@@ -1,0 +1,47 @@
+// filepath: src/test/java/com/trackbz/demo/controller/GpsControllerTest.java
+package com.trackbz.demo.controller;
+
+import com.trackbz.demo.broker.KafkaProducer;
+import com.trackbz.demo.model.GpsData;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
+import org.springframework.http.MediaType;
+import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.setup.MockMvcBuilders;
+
+import static org.mockito.Mockito.doNothing;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+
+public class GpsControllerTest {
+
+    private MockMvc mockMvc;
+
+    @Mock
+    private KafkaProducer kafkaProducer;
+
+    @InjectMocks
+    private GpsController gpsController;
+
+    @BeforeEach
+    public void setUp() {
+        MockitoAnnotations.openMocks(this);
+        mockMvc = MockMvcBuilders.standaloneSetup(gpsController).build();
+    }
+
+    @Test
+    public void testSendGpsData() throws Exception {
+        GpsData gpsData = new GpsData();
+        // Set the properties of gpsData as needed
+
+        doNothing().when(kafkaProducer).sendMessage(gpsData);
+
+        mockMvc.perform(post("/api/gps/send")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content("{\"latitude\": 12.34, \"longitude\": 56.78}"))
+                .andExpect(status().isOk());
+    }
+}

@@ -1,0 +1,40 @@
+// filepath: src/test/java/com/trackbz/demo/controller/PinotControllerTest.java
+package com.trackbz.demo.controller;
+
+import com.trackbz.demo.service.PinotService;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
+import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.setup.MockMvcBuilders;
+
+import static org.mockito.Mockito.when;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+
+public class PinotControllerTest {
+
+    private MockMvc mockMvc;
+
+    @Mock
+    private PinotService pinotService;
+
+    @InjectMocks
+    private PinotController pinotController;
+
+    @BeforeEach
+    public void setUp() {
+        MockitoAnnotations.openMocks(this);
+        mockMvc = MockMvcBuilders.standaloneSetup(pinotController).build();
+    }
+
+    @Test
+    public void testQueryPinot() throws Exception {
+        when(pinotService.queryPinot()).thenReturn("query result");
+
+        mockMvc.perform(get("/api/v1/pinot"))
+                .andExpect(status().isOk());
+    }
+}

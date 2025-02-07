@@ -31,4 +31,8 @@ public class VeiculoService {
 
         return "";
     }
+    public Veiculo findById(Long id) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'findById'");
+    }
 }
