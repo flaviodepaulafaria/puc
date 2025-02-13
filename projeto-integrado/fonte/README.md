@@ -20,6 +20,36 @@ Esta aplicação é uma implementação de arquitetura orientada a eventos (EDA)
 
 `mvn spring-boot:run`
 
+6. **A seguir um resumo das rotas principais da aplicação**:
+   
+Recepção de Dados GPS:
 
+Método: POST
+Rota: /api/v1/gps
+Classe: GpsController
+Descrição: Recebe dados GPS e os envia para um tópico Kafka.
+Consulta de Dados em Pinot:
+
+Método: GET
+Rota: /api/v1/pinot
+Classe: PinotController
+Descrição: Realiza consultas a um banco de dados Pinot e exporta os resultados para um arquivo CSV.
+Gerenciamento de Veículos:
+
+Método: POST
+
+Rota: /api/v1/veiculos
+
+Classe: VeiculoController
+
+Descrição: Cria um novo veículo no MongoDB.
+
+Método: GET
+
+Rota: /api/v1/veiculos
+
+Classe: VeiculoController
+
+Descrição: Consulta veículos no MongoDB.
 
 ![](C:\FPF\Pessoal\PUC\projeto integrado\projetos\trackBZ\imagens\springboot_run.PNG)
