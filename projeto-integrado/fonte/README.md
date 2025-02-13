@@ -17,30 +17,28 @@ Esta aplicação é uma implementação de arquitetura orientada a eventos (EDA)
    - O arquivo application.properties contém configurações como a URL do MongoDB, configurações do Kafka e a URL do Pinot.
 
 6. **A seguir um resumo das rotas principais da aplicação**:
-   
-Recepção de Dados GPS:
+   - Recepção de Dados GPS:
+      - Método: POST
+      - Rota: /api/v1/gps
+      - Classe: GpsController
+      - Descrição: Recebe dados GPS e os envia para um tópico Kafka.
+      
+   - Consulta de Dados em Pinot:
+      - Método: GET
+      - Rota: /api/v1/pinot
+      - Classe: PinotController
+      - Descrição: Realiza consultas a um banco de dados Pinot e exporta os resultados para um arquivo CSV.
 
-   Método: POST
-   Rota: /api/v1/gps
-   Classe: GpsController
-   Descrição: Recebe dados GPS e os envia para um tópico Kafka.
-   Consulta de Dados em Pinot:
-
-   Método: GET
-   Rota: /api/v1/pinot
-   Classe: PinotController
-   Descrição: Realiza consultas a um banco de dados Pinot e exporta os resultados para um arquivo CSV.
-   Gerenciamento de Veículos:
-
-   Método: POST
-   Rota: /api/v1/veiculos
-   Classe: VeiculoController
-   Descrição: Cria um novo veículo no MongoDB.
-   
-   Método: GET
-   Rota: /api/v1/veiculos
-   Classe: VeiculoController
-   Descrição: Consulta veículos no MongoDB.
+   - Gerenciamento de Veículos:
+      - Método: POST
+      - Rota: /api/v1/veiculos
+      - Classe: VeiculoController
+      - Descrição: Cria um novo veículo no MongoDB.
+  
+      - Método: GET
+      - Rota: /api/v1/veiculos
+      - Classe: VeiculoController
+      - Descrição: Consulta veículos no MongoDB.
 
    4. **Para executar a aplicação**:
       - `mvn spring-boot:run`
